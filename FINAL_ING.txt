@@ -1,0 +1,96 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Examen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Se utiliza la instancia para crear un nuevo celular
+            var celular = new Celular();
+            celular.Tipo = "Móvil";
+            celular.Marca = "Samsung";
+
+            Console.WriteLine(celular.Encender());
+            Console.WriteLine(celular.Apagar());
+            Console.ReadKey();
+        }
+    }
+}
+
+___________________________________________________________________________________________________
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Examen
+{     //Aquí hay abstracción porque se obliga a que el aparato tenga Tipo, Marca, Encienda, Apague, Llame y Envíe mensajes
+    public class Aparato : IAparato
+    {   
+        private string _tipo = "";
+        private string _marca = "";
+        
+        public string Tipo { get; set; }
+        public string Marca { get; set; }
+        
+       
+        public string Encender()
+        {
+             return Tipo + "-" + Marca;
+        }
+
+        public string Apagar()
+        {
+            return Tipo + "-" + Marca;
+        }
+    }
+}
+
+
+__________________________________________________________________________________________________
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Examen
+{ //se utiliza herencia, porque Celular hereda de Aparato, quiere decir que tiene los mismos atributos y métodos
+   public class Celular:Aparato
+
+   {
+
+    }
+}
+
+_____________________________________________________________________________________________________
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Examen
+{
+ //Se crea la interfaz
+  public interface IAparato
+   {
+    string Tipo  {get; set;}
+    string Marca {get; set;}
+    
+    string Encender();
+    string Apagar();
+    string Llamar();
+    string EnviarMsj();
+   }
+}
